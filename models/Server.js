@@ -26,9 +26,15 @@ class Server {
   }
 
   middelwares () {
-    this.app.use( express.static( path.resolve(__dirname, '../public') ) )
+    this.app.use( express.static( path.resolve(__dirname, '../public') ) );
     // CORS
-    this.app.use( cors() )
+    this.app.use( cors() );
+
+    // Parseo del body
+    this.app.use( express.json() );
+
+    // Api Endpoints
+    this.app.use('/api/login', require('../router/auth'));
   }
 
   consgurarSockets() {

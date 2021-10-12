@@ -28,4 +28,3 @@ MensajeSchema.method('toJSON', function() {
 });
 
 module.exports = model('Mensaje', MensajeSchema);
-
