@@ -10,7 +10,8 @@ class Sockets {
   socketEvents () {
     // On Connection
     this.io.on('connection', (socket) => {
-
+      
+      console.log('Connected')
       // Todo: Validar el JWT valido && desconectar
 
       // Saber que usuario esta activo mediante el UID del token
@@ -23,6 +24,10 @@ class Sockets {
       // Mensaje personal
 
       // Disconnect
+      socket.on('disconnect', () => {
+        console.log('cliente desconectado')
+      })
+
       // Marcar en la base dedatos que el usuario se desconecto
 
       // Emitir todos los usuarios conectados 
