@@ -16,7 +16,16 @@ const generarJWT = (uid) => { // agnostico, no depende ni de login ni del renew
   });
 }
 
+const comprobarJWT = (token = '') => {
+  try {
+    const { uid } = jwt.verify(token, process.env.JWT_KEY) //Leyendo token enviado en el query
+    return [true, uid]
+  } catch (error) {
+    return [false, null]
+  }
+}
+
 
 module.exports = {
-  generarJWT
+  generarJWT, comprobarJWT
 }
