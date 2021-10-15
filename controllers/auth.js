@@ -84,16 +84,12 @@ const login = async (req, res) => {
 }
 
 const revalidarToken = async (req, res) => {
-
-
-  const uid = req.uid;  // documentar el paso de la request
-  
+  const uid = req.uid;
   // Generar un nuevo Token
   const token = await generarJWT(uid);
 
   // Refresh de la informacion
   const usuario = await Usuario.findById(uid);
-
   return res.json({
     ok: true,
     usuario, token

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const generarJWT = (uid) => { // agnostico, no depende ni de login ni del renew
+const generarJWT = (uid) => {
   return new Promise((resolve, reject) => {
     const payload = { uid };
     jwt.sign(payload, process.env.JWT_KEY, {
@@ -18,7 +18,7 @@ const generarJWT = (uid) => { // agnostico, no depende ni de login ni del renew
 
 const comprobarJWT = (token = '') => {
   try {
-    const { uid } = jwt.verify(token, process.env.JWT_KEY) //Leyendo token enviado en el query
+    const { uid } = jwt.verify(token, process.env.JWT_KEY)
     return [true, uid]
   } catch (error) {
     return [false, null]
